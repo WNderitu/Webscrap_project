@@ -1,0 +1,11 @@
+Create a folder called webscrap_project on your computer
+Open VS code 
+Open the folder webscrap_project
+Open the integrated terminal in VS code
+Create a virtual environment >> python3 -m venv virtual
+Activate virtual environment - source virtual/bin/activate
+Create a file proj.py
+install 'pip install requests' and then 'pip install bs4 on the integrated terminal
+then run the code as outlined in proj.py
+
+
