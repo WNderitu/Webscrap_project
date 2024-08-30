@@ -1,25 +1,30 @@
 import requests
 from bs4 import BeautifulSoup
 
-result = requests.get('https://www.bbc.com/')
-print(result.status_code)
+# error handling for HTTP requests in case the website is not accessible when using get. checks request errors. 
+response = requests.get('https://www.bbc.com/')
+if response.status_code == 200:
+    src = response.content
+    print(src)
+else:
+    print('Error accessing the website', response.status_code)
 
-src = result.content
-print(src)
+soup = BeautifulSoup(response.content, 'html.parser')
 
-soup = BeautifulSoup(result.content, 'html.parser')
-# new headlines in h2 tags.
-h2_tags = soup.find_all('h2')
+# news headlines in h2 tags class - sc-4fedabc7-3 zTZri
+h2_tags = soup.find_all('h2',class_='sc-4fedabc7-3 zTZri')
 for h2 in h2_tags:
-
     print(h2.text)
 
-# summary of headlines in p
-p_tags= soup.find_all('p')
+# summary of news headlines in p  class sc-e5949eb5-0 gpCoKv
+p_tags= soup.find_all('p', class_= 'sc-e5949eb5-0 gpCoKv')
 for p in p_tags:
-
     print(p.text)
 
+# summary of news headlines in p - class sc-b8778340-4 kYtujW
+p_tags= soup.find_all('p', class_= 'sc-b8778340-4 kYtujW')
+for p in p_tags:
+    print(p.text)
     
 
 
